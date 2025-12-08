@@ -1,0 +1,577 @@
+/* Container */
+.mood-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background */
+.mood-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.mood-background.visible {
+    opacity: 1;
+}
+
+/* Overlay - Dark Gradient for Text Readability */
+.mood-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(20, 10, 40, 0.5) 50%,
+            rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+/* Content */
+.mood-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* ==================== INPUT VIEW ==================== */
+.input-view {
+    width: 100%;
+    max-width: 520px;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.input-card {
+    background: rgba(20, 15, 35, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 32px;
+    padding: 3rem;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.app-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #a78bfa, #f472b6, #fb923c);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 20px rgba(167, 139, 250, 0.4));
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.app-logo {
+    width: 72px;
+    height: 72px;
+    filter: drop-shadow(0 4px 16px rgba(167, 139, 250, 0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+.app-desc {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.mood-input {
+    width: 100%;
+    min-height: 130px;
+    padding: 1.25rem;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.mood-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.mood-input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(167, 139, 250, 0.6);
+    box-shadow:
+        0 0 0 4px rgba(167, 139, 250, 0.15),
+        0 0 30px rgba(167, 139, 250, 0.2);
+    outline: none;
+}
+
+.error-text {
+    color: #fb7185;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 35px rgba(139, 92, 246, 0.4),
+        0 5px 15px rgba(236, 72, 153, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.quick-moods {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+}
+
+.quick-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.quick-btn:hover {
+    transform: scale(1.2) rotate(5deg);
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+}
+
+/* ==================== RESULT VIEW ==================== */
+.result-view {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1300px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mood Info Panel */
+.mood-info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.mood-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mood-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.mood-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(167, 139, 250, 0.3);
+    margin: 0;
+}
+
+.mood-insight {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Player Section */
+.player-section {
+    background: rgba(20, 15, 35, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.25rem;
+}
+
+.player-section h3 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.spotify-embed {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-embed iframe {
+    display: block;
+}
+
+.reset-btn {
+    align-self: flex-start;
+    padding: 0.9rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 99px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Songs Panel */
+.songs-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(20, 15, 35, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 1.75rem;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.songs-panel h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+.songs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.songs-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.songs-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.songs-grid::-webkit-scrollbar-thumb {
+    background: rgba(167, 139, 250, 0.4);
+    border-radius: 3px;
+}
+
+.song-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.song-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(6px);
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.song-btn.active {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.25), rgba(244, 114, 182, 0.2));
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow:
+        0 0 20px rgba(167, 139, 250, 0.2),
+        inset 0 0 20px rgba(167, 139, 250, 0.1);
+}
+
+.song-number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(244, 114, 182, 0.2));
+    border-radius: 50%;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 0.85rem;
+}
+
+.song-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-title {
+    display: block;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+}
+
+.song-artist {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.15rem;
+}
+
+.play-icon {
+    color: rgba(167, 139, 250, 0.7);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.song-btn:hover .play-icon,
+.song-btn.active .play-icon {
+    color: #a78bfa;
+    transform: scale(1.2);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1000px) {
+    .result-view {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .mood-info-panel {
+        justify-content: flex-start;
+    }
+
+    .mood-emoji {
+        font-size: 3.5rem;
+    }
+
+    .mood-title {
+        font-size: 2.5rem;
+    }
+
+    .songs-panel {
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .mood-content {
+        padding: 1rem;
+    }
+
+    .input-card {
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .app-title {
+        font-size: 2.5rem;
+    }
+
+    .app-logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .mood-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .mood-title {
+        font-size: 2rem;
+    }
+
+    .mood-emoji {
+        font-size: 3rem;
+    }
+
+    .reset-btn {
+        align-self: center;
+    }
+}

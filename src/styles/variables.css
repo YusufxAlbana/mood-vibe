@@ -1,0 +1,82 @@
+/* HSL Color System for Easy Dark Mode Transition */
+:root {
+  /* Brand Colors - Vibrant Purple/Pink Gradient */
+  --hue-primary: 260;
+  --sat-primary: 85%;
+  --lig-primary: 60%;
+  --color-primary: hsl(var(--hue-primary), var(--sat-primary), var(--lig-primary));
+
+  --hue-secondary: 320;
+  --color-secondary: hsl(var(--hue-secondary), 85%, 55%);
+
+  --hue-accent: 45;
+  --color-accent: hsl(var(--hue-accent), 100%, 60%);
+
+  /* Gradient Backgrounds - Bright & Happy */
+  --gradient-primary: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+  /* Lighter purple to pink */
+  --gradient-surface: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 255, 0.9));
+  --gradient-bg: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #fae8ff 100%);
+  /* Very bright pastel gradient */
+  --gradient-card-hover: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+
+  /* Backgrounds - Bright Mode */
+  --bg-hue: 240;
+  --bg-sat: 30%;
+  --bg-lig: 97%;
+  --color-bg: var(--gradient-bg);
+  --color-surface: rgba(255, 255, 255, 0.85);
+  --color-surface-translucent: rgba(255, 255, 255, 0.6);
+  --color-surface-solid: #ffffff;
+
+  /* Text - High Contrast on Bright Background */
+  --color-text-main: #1f2937;
+  /* Dark Gray */
+  --color-text-muted: #6b7280;
+  --color-text-accent: #8b5cf6;
+
+  /* Glassmorphism - Icy/Bright */
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+  /* Colored shadow */
+  --blur-amt: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(100, 80, 180, 0.08);
+  --shadow-md: 0 4px 20px rgba(100, 80, 180, 0.12);
+  --shadow-lg: 0 8px 40px rgba(100, 80, 180, 0.18);
+  --shadow-glow: 0 0 30px rgba(138, 43, 226, 0.3);
+
+  /* Ease */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+}
+
+/* Dark Mode Override */
+/* Dark Mode Override - DISABLED to force bright theme */
+/* [data-theme="dark"] {
+  --color-bg: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%);
+  --color-surface: rgba(30, 30, 50, 0.7);
+  --color-surface-translucent: rgba(30, 30, 50, 0.5);
+  --color-surface-solid: #1a1a2e;
+
+  --color-text-main: hsl(240, 20%, 92%);
+  --color-text-muted: hsl(240, 15%, 65%);
+  --color-text-accent: hsl(280, 80%, 70%);
+
+  --glass-bg: rgba(20, 20, 40, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(138, 43, 226, 0.4);
+} */

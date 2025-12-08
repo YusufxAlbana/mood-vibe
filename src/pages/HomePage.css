@@ -1,0 +1,6 @@
+/* Full Screen HomePage */
+.home-page-full {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}

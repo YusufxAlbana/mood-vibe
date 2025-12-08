@@ -1,0 +1,126 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+}
+
+.mood-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s var(--ease-spring);
+    color: var(--color-text-main);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Gradient overlay on hover */
+.mood-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.mood-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.mood-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+.mood-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: transparent;
+}
+
+.mood-card:hover::before {
+    opacity: 1;
+}
+
+.mood-card:hover::after {
+    opacity: 1;
+}
+
+.mood-card:hover .mood-emoji {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.mood-card:hover .mood-label {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mood-card:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+.mood-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: all 0.4s var(--ease-spring);
+}
+
+.mood-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .mood-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .mood-emoji {
+        font-size: 2.5rem;
+    }
+
+    .mood-label {
+        font-size: 0.95rem;
+    }
+}

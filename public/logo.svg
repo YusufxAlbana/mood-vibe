@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Heart base -->
+  <path d="M32 56c-1.5 0-3-.5-4.2-1.5C14.5 43.5 8 35.5 8 26c0-7.2 5.8-13 13-13 4.2 0 8.2 2 11 5.2C34.8 15 38.8 13 43 13c7.2 0 13 5.8 13 13 0 9.5-6.5 17.5-19.8 28.5-1.2 1-2.7 1.5-4.2 1.5z" fill="url(#logoGrad)" filter="url(#glow)"/>
+  <!-- Music wave inside -->
+  <g fill="white" opacity="0.95">
+    <rect x="22" y="28" width="3" height="12" rx="1.5"/>
+    <rect x="28" y="24" width="3" height="16" rx="1.5"/>
+    <rect x="34" y="26" width="3" height="14" rx="1.5"/>
+    <rect x="40" y="30" width="3" height="8" rx="1.5"/>
+  </g>
+</svg>
