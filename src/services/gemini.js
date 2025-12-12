@@ -1,7 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize the client with API key
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyAsnFHbfNElONFmMnfnIZyBIPcqey-gGYE' });
+// Initialize the client with API key from environment variable
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyDas9RSrxmDczmpXGJQi_-WQBpcZXLowds';
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 // Personality traits mapping
 const PERSONALITY_MAP = {
